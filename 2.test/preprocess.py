@@ -1,5 +1,6 @@
 import scanpy as sc
 import click
+from scipy.sparse import csr_matrix
 
 @click.command()
 @click.option('--input_h5ad', default=None, help='Path to h5ad file')
