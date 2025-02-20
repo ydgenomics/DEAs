@@ -14,7 +14,11 @@ def process_h5ad(input_h5ad, pre_ind, pre_stim, pre_cell, out_h5ad):
     # Check and assign raw counts
     if 'counts' in adata.layers:
         adata.X = adata.layers['counts'].copy()
-    
+
+    # Check adata.X whether is csr_matrix and change into csr_matrix
+    if not isinstance(adata.X, csr_matrix):
+        adata.X = csr_matrix(adata.X)
+
     # Check and assign observation values
     if 'ind' not in adata.obs.columns and pre_ind in adata.obs.columns:
         adata.obs['ind'] = adata.obs[pre_ind]
