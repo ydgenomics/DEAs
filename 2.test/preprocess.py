@@ -19,6 +19,10 @@ def process_h5ad(input_h5ad, pre_ind, pre_stim, pre_cell, out_h5ad):
     # Check adata.X whether is csr_matrix and change into csr_matrix
     if not isinstance(adata.X, csr_matrix):
         adata.X = csr_matrix(adata.X)
+    
+    is_integer = np.all(adata.X.data == adata.X.data.astype(int))
+    if not is_integer:
+        print("Error that adata.X is't raw data")
 
     # Check and assign observation values
     if 'ind' not in adata.obs.columns and pre_ind in adata.obs.columns:
