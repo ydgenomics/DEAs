@@ -1,2 +1,2 @@
-# L-memento
-Learning memento for the analysis of difference expression gene
+# Difference genes analysis with multiple methods
+
